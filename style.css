@@ -1,0 +1,299 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#boards {
+    font-family: Arial;
+}
+
+.board {
+    color: white;
+    background-color: limegreen;
+    height: 100vh;
+}
+
+.board-header {
+    padding: 10px;
+}
+
+.board-header input {
+    color: white;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+}
+
+.board-header input:focus {
+    color: black;
+    background-color: white;
+}
+
+.board-content {
+    display: flex;
+}
+
+.column {
+    color: black;
+    width: 250px;
+    background-color: gainsboro;
+    margin: 0 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    margin-top: 25px;
+}
+
+.column-header {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.column-header input {
+    font-size: 25px;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    max-width: 220px;
+}
+
+.column-header input:focus {
+    background-color: white;
+}
+
+
+
+.column-content {
+    padding: 5px;
+}
+
+.column-delete {
+    display: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.column:hover .column-delete {
+    display: block;
+}
+
+.card {
+    background-color: ghostwhite;
+    border-radius: 5px;
+    margin: 5px 0;
+    position: relative;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.card-delete {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.card:hover .card-delete {
+    display: block;
+}
+
+.flex-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.to-right {
+    margin: 0 0 0 auto;
+}
+
+.ghost {
+    opacity: 0.5;
+}
+
+.bg-fix {
+    background-size: cover;
+    background-position: center;
+}
+
+.SettingsMenu{
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.Settings-main-btn{
+    outline: 0;
+    border: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    background-image: linear-gradient(to right,#e052a0,#f15c41)!important;
+    border-radius: 3px;
+    padding: 16px 18px 15px;
+    white-space: nowrap;
+}
+.Settings-main-btn:hover {
+    background-color: #e6375a;
+    background-image: none!important;
+}
+.Settings{
+    display: flex;
+    flex-direction: column;
+}
+.settingsDiv{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.Settings button{
+    padding: 5px 10px;
+    margin: 15px;
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    padding: 0 56px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 7px;
+    font-weight: 400;
+    font-size: 16px;
+    background: #fff;
+    color: #696969;
+    box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+    transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
+
+}
+
+
+
+
+.visible{
+    display: inline-block;
+}
+.hidden{
+    display: none;
+}
+
+.test{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 180vh;
+    height: 80vh;
+    background-color: rgba(255, 255, 255, 0.90);
+    margin: 0 auto;
+    border-radius: 1em;
+}
+.testt{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.testt p{
+    font-size: 32px;
+    color: black;
+}
+.wallpaperX{
+    padding: 15px;
+
+}
+.wallpaperPrev{
+    width: 220px;
+    height: 160px;
+    margin: 10px;
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    border-radius: 0.5em;
+
+}
+.wallpaperPrev:hover{
+    cursor: pointer;
+}
+#wallpapersBlock{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.btn-create-class{
+
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    background-image: linear-gradient(to right,#e052a0,#f15c41);
+    cursor: pointer;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 10px;
+    font-size: 12px; 
+}
+.btn-create-class:hover {
+    background-image: linear-gradient(to right,#3ec7e0,#526bf4);
+}
+.ok-btn{
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: #cc4d29;
+    border-color: #cc4d29;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+    margin-top: 10px;
+  
+}
+.ok-btn:hover {
+    background: #e4461b;
+    border-color: #e4461b;
+}
+.crt-tsk{
+    margin-top: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0.25em;
+}
+
+
+
+.wallpaperX{
+    outline: 0;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-radius: 3px;
+    color: #fff;
+    background: #000;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    padding: 12px 20px;
+    text-align:center;
+    transition-duration: .15s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+
+                
+.wallpaperX:hover{
+    color: #000;
+    background: rgb(255, 218, 87);
+}
+                
