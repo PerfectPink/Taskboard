@@ -1,48 +1,51 @@
-<meta charset="utf-8">
-</meta>
+<meta charset="utf-8"></meta>
 <link rel="stylesheet" href="style.css">
-<script src="js.js" defer></script>
-
+<script defer src="js.js"></script>
 
 <div id="boards">
-
+   
 </div>
 
+<div id="side-menu" onclick="toggleBoardsList()">
+    
+</div>
+
+<div id="sidebar">
+    <div id="background-place">
+
+    </div>
+</div>
 <template id="tmpl-board">
     <div class="board bg-fix" style="background-image: url('${board_background}');">
         <div class="board-header flex-box">
             <div>
-                <input type="text" value="${board_header}" oninput="boardRename(${board_number})">
-            </div>
-            <div class="SettingsMenu">
-                <div class="settingsDiv">
-                    <button onclick="turnSettings()" class="Settings-main-btn">Show menu</button>
-                    <div class="Settings hidden" id="settingsBtns">
-                        <button onclick="clearAll()">Clear all</button>
-                        <button onclick="columnAdd()">Add column</button>
-                        <button onclick="changeWallpaperInterface()">Change Background</button>
-                    </div>
-                </div>
-            </div>
-            <!-- <div>
-                <input type="text" value="${board_background}" onchange="boardChangeBackground(${board_number})">
-            </div> -->
-        </div>
-        <div class="board-content">
-            <div class="flex-box">
-                ${board_content}
-            </div>
-            <div class="test hidden" id="wallpaperInterface">
-                <div class="testt">
-                    <div>
-                        <button class="wallpaperX" onclick="changeWallpaperInterface()">X</button>
-                        <p>Choose Wallpaper</p>
-                    </div>
-                    <div>
-                        <div id="wallpapersBlock">
+                <input class="input-boardname" type="text" value="${board_header}" oninput="boardRename(${board_number})">
+                <div class="flex-menu">
+                    <button id="settingspanelBtn" class="settingsbutton" onclick="changeSettingsPanel()">
+                        
+                    </button> 
+                    <div id="settingsPanel" class="settingspanel hidden">
+                        <div class="flex-box-col">
+                            <button class="btn003" onclick="toggleMenu()">Сменить обои</button>
+                            
+                            <button class="btn003" onclick="boardAdd()">Добавить Доску</button>
+                            <button class="btn003" onclick="boardDelete(${board_number})">Удалить доску</button>
+                            <button class="btn003" onclick="clearAll()">Очистить всё</button>
                         </div>
+                        
                     </div>
+                    
+                    <button id="btn002" onclick="columnAdd()">
+                        Добавить колонку
+                    </button>
                 </div>
+                
+            </div>
+          
+        </div>
+        <div class="board-content ">
+            <div class="flex-box flexBoardContentUpd">
+                ${board_content}
             </div>
         </div>
     </div>
@@ -62,20 +65,26 @@
         <div class="column-content">
             ${column_content}
         </div>
-        <div>
-            <button onclick="btnCreateTask(${column_number})" id="btnCreateTask${column_number}"
-                class="btn-create-class">Создать задачу</button>
-            <div id="createTaskInterface${column_number}" class="hidden crt-tsk">
+        
+        <div class="card-form">
+            <div class="hidden" id="creationTsk">
                 <div>
-                    <input id="card-title${column_number}" type="text" placeholder="Task">
+                    <input class="card-title" type="text" placeholder="Title">
                 </div>
                 <div>
-                    <textarea id="card-description${column_number}" placeholder="task description"></textarea>
+                    <textarea class="card-description" placeholder="Description"></textarea>
                 </div>
                 <div>
-                    <button onclick="cardAdd(${column_number})" class="ok-btn">Ок</button>
+                    <input class="card-time" type="datetime-local">
+                </div>
+                <div>
+                    <button onclick="cardAdd(${board_number},${column_number})">Создать</button>
                 </div>
             </div>
+            <span class="btn001" onclick="toggleCreationTsk()">➕ Add card</span>
+        </div>
+        <div>
+            
         </div>
     </div>
 </template>
@@ -89,8 +98,28 @@
         <div class="card-content ghost">
             ${card_content}
         </div>
+        <div title="${card_notification}">
+            ${card_notification}
+        </div>
         <div class="card-delete" onclick="cardDelete(${column_number},${card_number})">
             &#10006;
         </div>
     </div>
+</template>
+
+<template id="tmpl-background">
+    <div onclick="changeBackground()" class="tile-background bg-fix" style="background-image: url('${background_image}');" data-background="${background_image}" >
+
+    </div>
+</template>
+
+<template id="tmpl-board-line">
+    <div class="tableChoose">
+        <div onclick="changeBoard()" class="side-menu-item" data-num="${board_num}"  >
+            ${board_title}
+            
+        </div>
+        <img class="sideBarPrev" src="${prevBck}" alt="">
+    </div>
+   
 </template>
