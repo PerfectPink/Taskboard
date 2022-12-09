@@ -129,7 +129,7 @@ function sender() {
             for (let k = 0; k < data['boards'][i]['columns'][j]['cards'].length; k++) {
                 
                 //делаем рассылку задачи если установлено время (ВОТ ТУТ СДЕЛАТЬ СРАВНЕНИЕ ВРЕМЕНИ)
-                if ( data['boards'][i]['columns'][j]['cards'][k]['time'] != '') { //&& cardData == dateNow
+                if ( data['boards'][i]['columns'][j]['cards'][k]['time']) { //&& cardData == dateNow
                     let cardDate = new Date(data['boards'][i]['columns'][j]['cards'][k]['time'])
                     console.log('cardDate = ', cardDate);
                     let notificationDate = cardDate.getDate() + '/' + cardDate.getMonth() + '/' + cardDate.getFullYear() + '/' + cardDate.getHours() + ':' + cardDate.getMinutes()
@@ -318,7 +318,6 @@ function renderBoards() {
                     .replace('${card_notification}', data['boards'][i]['columns'][j]['cards'][k]['time'])
                     .replace('${card_notification}', (data['boards'][i]['columns'][j]['cards'][k]['time'] != '') ? '&#10148;' : '')
                     .replace('${card_content}', data['boards'][i]['columns'][j]['cards'][k]['description']);
-
                 //добавляем готовый текст карточки к картокам КОЛОНКИ
                 columnCards += cardHtml;
 
@@ -466,18 +465,23 @@ function cardAdd(board_number, column_number) {
     let title = event.target.closest('.card-form').querySelector('.card-title').value;
     let description = event.target.closest('.card-form').querySelector('.card-description').value;
     let time = event.target.closest('.card-form').querySelector('.card-time').value;
-    console.log(time);
-    if (title == '' && description ==''){
+    if (title == '' && description == ''){
         alert('you cant add empty card')
         return
     }
     //наполняем карточку полученными данными
     card['title'] = title;
     card['description'] = description;
-    if(time != ' '){
-        var notifDate = new Date(time);
+    if(time){ //не работает : 'undefined', '', ' ', null, 'Invalid Date'
+        console.log(time.value);
 
+        var notifDate = new Date(time);
         card['time'] = notifDate.toString(); 
+
+        console.log('проверка пройдена с положительным результатом');
+    }else{
+        console.log('проверка не пройдена');
+        console.log(time.value);
     }
     
 
